@@ -15,6 +15,7 @@ import spring.proj.shop.repository.MemberRepository;
 import spring.proj.shop.repository.TeamRepository;
 
 import javax.annotation.PostConstruct;
+import javax.persistence.EntityManager;
 
 @RequiredArgsConstructor
 @RestController
@@ -27,12 +28,11 @@ public class MemberController {
     void initDb(){
         Team teamA = Team.builder().name("TeamA").build();
 
-        Member memberA = Member.builder().age(10).email("memberA@gmail.com").name("memberA").team(teamA).build();
-        Member memberB = Member.builder().age(10).email("memberB@gmail.com").name("memberB").team(teamA).build();
 
-        teamRepository.save(teamA);
+/*        teamRepository.save(teamA);
+
         memberRepository.save(memberA);
-        memberRepository.save(memberB);
+        memberRepository.save(memberB);*/
     }
 
     @GetMapping("/members/v1/{id}")
@@ -64,7 +64,6 @@ public class MemberController {
         public MemberDto(Member member) {
             this.name = member.getName();
             this.age = member.getAge();
-            this.team = member.getTeam();
         }
     }
 

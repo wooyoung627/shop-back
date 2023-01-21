@@ -3,6 +3,7 @@ package spring.proj.shop.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Builder
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @Getter
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
 @NoArgsConstructor
-public class Member {
+public class Member implements Serializable {
 
     @Id
     @Column(name = "member_id")
@@ -23,8 +24,6 @@ public class Member {
 
     private String email;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "team_id")
-    private Team team;
+    private Long team_id;
 
 }
