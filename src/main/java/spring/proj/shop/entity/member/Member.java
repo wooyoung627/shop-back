@@ -1,4 +1,4 @@
-package spring.proj.shop.entity;
+package spring.proj.shop.entity.member;
 
 import lombok.*;
 
@@ -24,6 +24,5 @@ public class Member implements Serializable {
 
     private String email;
 
-    private Long team_id;
-
+    private String phone;
 }
