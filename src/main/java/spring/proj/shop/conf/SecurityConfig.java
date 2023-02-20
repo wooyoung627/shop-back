@@ -33,16 +33,16 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeRequests((requests) ->
-                requests.antMatchers("/un-auth/**").permitAll()
+                requests
                         .antMatchers("/admin/**").hasRole(ADMIN.name())
                         .antMatchers("/user/**").hasRole(USER.name())
-                        .anyRequest().authenticated())
+                        .anyRequest().permitAll())
 
-//                .formLogin().disable()
+                .formLogin().disable()
 
-//                .addFilterBefore(
-//                        new SecurityFilter("/login", authenticationManager, successHandler, failureHandler),
-//                        UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(
+                        new SecurityFilter("/login", authenticationManager, successHandler, failureHandler),
+                        UsernamePasswordAuthenticationFilter.class)
 
                 .exceptionHandling(e ->
                         e.accessDeniedHandler(accessDeniedHandler)

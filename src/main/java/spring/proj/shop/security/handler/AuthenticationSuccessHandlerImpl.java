@@ -15,7 +15,7 @@ import java.io.IOException;
 public class AuthenticationSuccessHandlerImpl implements AuthenticationSuccessHandler {
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        log.info("AuthenticationSuccess [{}]", authentication.getDetails());
+        log.info("AuthenticationSuccess [{}]", authentication.getPrincipal());
         response.getWriter().print("AuthenticationSuccess " + authentication.getPrincipal());
     }
 }

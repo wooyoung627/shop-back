@@ -10,7 +10,6 @@ import spring.proj.shop.service.user.UserService;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/un-auth")
 public class UnAuthController {
 
     private final UserService userService;
