@@ -38,15 +38,17 @@ public class SecurityConfig {
                         .antMatchers("/user/**").hasRole(USER.name())
                         .anyRequest().authenticated())
 
-                .formLogin().disable()
+//                .formLogin().disable()
 
-                .addFilterBefore(
-                        new SecurityFilter("/login", authenticationManager, successHandler, failureHandler),
-                        UsernamePasswordAuthenticationFilter.class)
+//                .addFilterBefore(
+//                        new SecurityFilter("/login", authenticationManager, successHandler, failureHandler),
+//                        UsernamePasswordAuthenticationFilter.class)
 
-                .exceptionHandling()
-                .accessDeniedHandler(accessDeniedHandler)
-                .authenticationEntryPoint(authenticationEntryPoint)
+                .exceptionHandling(e ->
+                        e.accessDeniedHandler(accessDeniedHandler)
+                                .authenticationEntryPoint(authenticationEntryPoint))
+
+                .oauth2Login()
 
                 .and()
                 .csrf().disable();

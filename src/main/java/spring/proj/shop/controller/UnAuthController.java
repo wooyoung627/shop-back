@@ -1,14 +1,13 @@
 package spring.proj.shop.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.web.bind.annotation.*;
 import spring.proj.shop.dto.user.JoinUserDto;
 import spring.proj.shop.entity.user.User;
 import spring.proj.shop.service.user.UserService;
 
+@Slf4j
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/un-auth")
@@ -16,10 +15,15 @@ public class UnAuthController {
 
     private final UserService userService;
 
+    @GetMapping
+    public String test() {
+        log.info("un auth test");
+        return "OK";
+    }
+
     @PostMapping("/join")
     public User join(@RequestBody JoinUserDto userDto) {
         return userService.join(userDto);
     }
-
 }
 

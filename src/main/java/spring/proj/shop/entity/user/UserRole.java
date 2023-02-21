@@ -2,18 +2,15 @@ package spring.proj.shop.entity.user;
 
 import lombok.Getter;
 
+@Getter
 public enum UserRole {
 
-    ADMIN("ADMIN"),
-    USER("USER");
+    ADMIN("ROLE_ADMIN"),
+    USER("ROLE_USER");
 
-    private String name;
+    private final String roleName;
 
-    UserRole(String name) {
-        this.name = name;
-    }
-
-    public String getRoleName() {
-        return "ROLE_" + name;
+    UserRole(String roleName) {
+        this.roleName = roleName;
     }
 }
