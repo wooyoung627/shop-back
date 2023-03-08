@@ -1,3 +1,7 @@
+server:
+  servlet:
+    context-path: /api
+
 spring:
   profiles:
     include: oauth
@@ -15,13 +19,13 @@ spring:
       hibernate:
         #        show_sql: true
         format_sql: true
-#        use_sql_comments: true
 
+#        use_sql_comments: true
 logging.level:
   org.hibernate.SQL: debug
+
+
 #    org.hibernate.type: trace
-
-
 #spring:
 #  security:
 #    oauth2:
